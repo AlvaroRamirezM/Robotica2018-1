@@ -10,6 +10,7 @@ int tiempo = 250;
 int delayP = 1000;
 int Comando_0;
 int poscicion = 0;
+int angulo = 0;
 /**
  * Configuración inicial, se seleccionan los pines de salida para las ruedas y se hace begin al wire y al serial 
  */
@@ -100,6 +101,7 @@ void leer(int pin)
     d0 = Wire.read()-'0';
     d1 = Wire.read()-'0';
     poscicion = d1*10 + d0;
+    angulo = (poscicion/20)*360;
     if (pin == 7)
     {
       Serial.print("Izquierdo: ");
@@ -109,6 +111,7 @@ void leer(int pin)
       Serial.print("Derecho: ");
     }
     Serial.println(poscicion);
+    Serial.println(angulo);
   }
 }
  
